@@ -1,0 +1,35 @@
+
+<ion-content color="dark">
+    <form #form="ngForm" (ngSubmit)="login(form)">
+        <ion-grid>
+            <ion-row color="dark" justify-content-center>
+                <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                    <div text-center>
+                        <img src="assets/icon/isBusy.png" class="displayed" height='80' width='150' /><br />
+                    </div>
+                    <div padding>
+                        <ion-item>
+                            <ion-input class="ion-text-center" placeholder="Nom d'utilisateur" name="username" type="text" [(ngModel)]="formulaire.username"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input class="ion-text-center" placeholder="Mot de passe" name="password" type="password" [(ngModel)]="formulaire.password"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-row class="first">
+                                <div text-center size-xs="10">
+                                    <p><a href="/login">Mot de passe oublie ?</a></p>
+                                </div>
+                            </ion-row>
+                        </ion-item>
+                    </div>
+                    <div padding>
+                        <ion-button expand="block" size="large" type="submit">Login</ion-button>
+                        <div class="ion-text-center">
+                            <p>{{result.error}}</p>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

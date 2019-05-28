@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Recherche</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-button (click)="logout()">Logout</ion-button>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="getdata($event)"></ion-searchbar><br>
+    <!-- <ion-item>
+      <ion-label>Select Searchtype</ion-label>
+      <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
+        <ion-select-option value="">All</ion-select-option>
+        <ion-select-option value="movie">Movie</ion-select-option>
+        <ion-select-option value="series">Series</ion-select-option>
+        <ion-select-option value="episode">Episode</ion-select-option>
+      </ion-select>
+    </ion-item> -->
+
+    <ion-list>
+
+        <ion-item *ngFor="let item of (result.emplacements)">
+            <ion-item button [routerLink]="['/', 'emplacements', item.id]" style="width: 100%">
+
+                <ion-label text-wrap>
+                    <h3>{{ item.nomEmplacement }}</h3>
+                    {{ item.categorie }}
+                </ion-label>
+            </ion-item>
+
+            <ion-button fill="clear" (click)="changeIcon(item.id)">
+                <!-- <input type="text" value="{{name}}" id="{{item.id}}" style="width: 1em"> -->
+                <ion-icon id="{{item.id}}" name="ios-star-outline"></ion-icon>
+            </ion-button>
+        </ion-item>
+
+    </ion-list>
+
+
+    

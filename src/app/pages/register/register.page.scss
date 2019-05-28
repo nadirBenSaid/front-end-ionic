@@ -1,0 +1,22 @@
+ion-item{
+    --background:dark;
+    light:#f4f5f8;
+    --color: white;
+}
+
+.first{
+	margin-buttom:20px;
+}
+ion-button{
+  --background:dark;
+  color: white;
+  border-radius: 20px;
+  border: 2px solid white; 
+  
+}
+.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:40px;
+}

@@ -1,0 +1,8 @@
+{
+  "name": "front-office-isBusy",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "47bea4af"
+}

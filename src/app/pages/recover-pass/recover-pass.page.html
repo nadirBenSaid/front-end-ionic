@@ -1,0 +1,58 @@
+
+<ion-app>
+
+	<ion-header>
+
+  <ion-toolbar color="primary">
+
+ <ion-buttons slot="start">
+
+      <ion-back-button defaultHref="home"></ion-back-button>
+
+    </ion-buttons>
+
+    <ion-title>  
+ 
+Mot de passe oublié
+
+</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<div>
+	<br><br>
+</div>
+<ion-content>
+  <div class="ion-padding">
+    
+  
+
+<form [formGroup]="inputEmail" >
+  <ion-item>
+
+    <ion-label position="floating">Votre adresse email</ion-label>
+
+    <ion-input type = "email" formControlName="inputEmail"></ion-input>
+
+</ion-item>
+
+
+    <br>
+    <ion-button expand="full" color="dark" id ="btnrecap" type="submit">Récupérer votre mot de passe</ion-button>
+
+</form>
+  </div>
+
+
+</ion-content>
+
+<ion-footer >
+  <ion-toolbar color="Success">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-footer>
+
+<script src="app.js"></script>
+</ion-app>

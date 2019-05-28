@@ -1,0 +1,105 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/search"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{this.emplacements.emplacement.nomEmplacement}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<br><br>
+<ion-content>
+
+	<ion-item no-lines>
+		 <ion-icon name="pin" slot="start"></ion-icon>
+     <ion-label text-wrap>
+    Categorie: 
+  </ion-label>
+  <ion-label text-wrap>
+    {{this.emplacements.emplacement.categorie}}
+  </ion-label>
+ <br><br>
+</ion-item>
+
+<ion-list>
+  <ion-item>
+    <ion-label>Jour</ion-label>
+    <ion-select value="{{sysDateDay}}" ok-text="Choisir" #C  (ionChange)="onSelect(C.value)" cancel-text="Annuler">
+      <ion-select-option value="lundi" (click)="onSelect('lundi')">Lundi</ion-select-option>
+      <ion-select-option value="mardi" (click)="onSelect('mardi')">Mardi</ion-select-option>
+      <ion-select-option value="mercredi" (click)="onSelect('mercredi')">Mercredi</ion-select-option>
+      <ion-select-option value="jeudi" (click)="onSelect('jeudi')">Jeudi</ion-select-option>
+      <ion-select-option value="vendredi" (click)="onSelect('vendredi')">Vendredi</ion-select-option>
+      <ion-select-option value="samedi" (click)="onSelect('samedi')">Samedi</ion-select-option>
+      <ion-select-option value="dimanche" (click)="onSelect('dimanche')">Dimanche</ion-select-option>
+
+    </ion-select>
+  </ion-item>
+
+</ion-list>
+
+<!-- CHART -->
+<div style="display:block">
+  <canvas baseChart id="mycanvas"
+  [data]='barChartData'
+  [labels]='barChartLabels' 
+  [chartType]='barChatType'
+  [options]='lineChartOptions'
+  [legend]='legend'>
+    </canvas>
+
+  </div>
+	<ion-grid>
+		<ion-row center>
+			<ion-col  text-center>
+
+				<ion-chip color="tertiary">
+  				<ion-label>3</ion-label>
+          &nbsp;
+  				<ion-label>Fermé(e)</ion-label>
+				</ion-chip>
+
+			</ion-col>
+
+			<ion-col  text-center>
+
+				<ion-chip color="danger">
+  				<ion-label>2</ion-label>
+          &nbsp;
+  				<ion-label>plein(e)</ion-label>
+				</ion-chip>
+
+			</ion-col>
+		</ion-row>
+
+			<ion-row center>
+			<ion-col  text-center>
+
+				<ion-chip color="warning">
+  				<ion-label>1</ion-label>
+          &nbsp;
+  				<ion-label>Moyen(ne)</ion-label>
+				</ion-chip>
+
+			</ion-col>
+			
+			<ion-col  text-center>
+
+				<ion-chip color="success">
+  				
+  			    <ion-label>0</ion-label>
+ 			    &nbsp;
+  				<ion-label>vide</ion-label>
+				</ion-chip>
+
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+<ion-row center>  
+ <ion-col text-center>   
+  <ion-button>Voter</ion-button>  
+ </ion-col> 
+</ion-row>
+</ion-content>
+ 
