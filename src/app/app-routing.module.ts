@@ -7,7 +7,7 @@ import { GuestGuard } from './services/guards/guest.guard';
 // GuestGuard: càd: il faut etre déconnecté pour consulter la page
 
 const routes: Routes = [
-    { path: '', redirectTo: 'search', pathMatch: 'full', canActivate: [AuthGuard] },
+    { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard] },
     { path: 'home', loadChildren: './pages/home/home.module#HomePageModule', canActivate: [GuestGuard] },
     { path: 'search', loadChildren: './pages/search/search.module#SearchPageModule', canActivate: [AuthGuard] },
   { path: 'welcome', loadChildren: './pages/welcome/welcome.module#WelcomePageModule' },
