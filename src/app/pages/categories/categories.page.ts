@@ -12,9 +12,9 @@ import { Observable } from 'rxjs';
 })
 export class CategoriesPage implements OnInit {
 	
-  public data=[];
+ data: Observable<any>;
 
- public result=[];
+result: any = [];
 
 
  //public catData: Array<{ title: string; id: string; icon: string }> = [];

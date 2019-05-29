@@ -23,12 +23,11 @@ export class LieuxParCategoriePage implements OnInit {
 
   }
 
-  public data=[];
+ data: Observable<any>;
 
- public result=[];
+result: any = [];
 
-
-  getData() {
+ getData() {
   	  	  this.Id = this.activatedRoute.snapshot.paramMap.get('id');
 
     this.lieuxParCategorieService.getEmplacement(this.Id).subscribe(
