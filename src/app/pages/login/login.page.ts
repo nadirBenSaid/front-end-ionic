@@ -32,9 +32,9 @@ export class LoginPage implements OnInit {
         var password = this.formulaire.password;
 
         this.loginService.authenticate(username, password).subscribe(data => {
-            console.log(data);
             this.result = data;
-            this.storage.set(this.key, JSON.stringify(this.result));
+            this.storage.set(this.key, JSON.stringify(this.result.user));
+    //        console.log(this.result.user.id);
 
             this.router.navigateByUrl('/search');
         },

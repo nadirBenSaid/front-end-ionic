@@ -19,6 +19,7 @@ const routes: Routes = [
     { path: ':id/details', loadChildren: './pages/details/details.module#DetailsPageModule' , canActivate: [AuthGuard]},
  { path: 'lieux-par-categorie/:id', loadChildren: './pages/lieux-par-categorie/lieux-par-categorie.module#LieuxParCategoriePageModule' , canActivate: [AuthGuard]},
   { path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesPageModule', canActivate: [AuthGuard] },
+  { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule', canActivate: [AuthGuard] },
   { path: 'locations', loadChildren: './pages/locations/locations.module#LocationsPageModule' , canActivate: [AuthGuard] }
 ];
  
