@@ -16,11 +16,11 @@ const routes: Routes = [
   { path: 'reclamer', loadChildren: './pages/reclamer/reclamer.module#ReclamerPageModule' },
     { path: 'favoris', loadChildren: './pages/favoris/favoris.module#FavorisPageModule', canActivate: [AuthGuard] },
     { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [GuestGuard]},
-    { path: ':id/details', loadChildren: './pages/details/details.module#DetailsPageModule' }
-
+    { path: ':id/details', loadChildren: './pages/details/details.module#DetailsPageModule' , canActivate: [AuthGuard]},
+ { path: 'lieux-par-categorie/:id', loadChildren: './pages/lieux-par-categorie/lieux-par-categorie.module#LieuxParCategoriePageModule' , canActivate: [AuthGuard]},
+  { path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesPageModule', canActivate: [AuthGuard] }
 ];
-,,  { path: 'lieux-par-categorie', loadChildren: './pages/lieux-par-categorie/lieux-par-categorie.module#LieuxParCategoriePageModule' }
-  { path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesPageModule' }
+ 
 
 
 @NgModule({

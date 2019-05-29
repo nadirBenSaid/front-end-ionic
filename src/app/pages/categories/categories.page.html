@@ -6,4 +6,15 @@
 
 <ion-content>
 
+
+  <ion-list *ngFor="let item of (result)"  >
+    <ion-item  class="item" detail [routerLink]="['/lieux-par-categorie/',item.id]">
+  
+      <div class="item-note" >
+        {{item.name}}
+      </div>
+    </ion-item>
+  </ion-list>
+ 
 </ion-content>
+

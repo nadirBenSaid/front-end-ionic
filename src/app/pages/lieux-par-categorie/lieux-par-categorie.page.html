@@ -1,9 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>lieux-par-categorie</ion-title>
+    <ion-title>lieuxParCategorie</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+<ion-list *ngFor="let item of (result.emplacements)"  >
+    <ion-item  class="item" detail >
+  
+      <div class="item-note" >
+        {{item.nomEmplacement}}
+      </div>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
