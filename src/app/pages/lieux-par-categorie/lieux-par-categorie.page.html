@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>lieuxParCategorie</ion-title>
+    <ion-title>Emplacements</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,10 +8,20 @@
 
 <ion-list *ngFor="let item of (result.emplacements)"  >
     <ion-item  class="item" detail >
-  
-      <div class="item-note" >
-        {{item.nomEmplacement}}
+
+    <ion-label text-wrap>
+    	<div item-content >
+      	        {{item.nomEmplacement}}
+
       </div>
+          <ion-label *ngIf="item.vote == 0"><b>Status: </b>vide</ion-label>
+          <ion-label *ngIf="item.vote == 1"><b>Status: </b>moyen</ion-label>
+          <ion-label *ngIf="item.vote == 2"><b>Status: </b>plein</ion-label>
+          <ion-label *ngIf="item.vote == 3"><b>Status: </b>fermé</ion-label>
+          <ion-label *ngIf="item.vote == 4"><b>Status: </b>non évalué</ion-label>
+        </ion-label>
+      
+
     </ion-item>
   </ion-list>
 
