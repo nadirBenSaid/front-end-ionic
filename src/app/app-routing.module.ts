@@ -3,8 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './services/guards/auth.guard';
 import { GuestGuard } from './services/guards/guest.guard';
 
-// AuthGuard: càd: il faut faire la connexion pour consulter la page
-// GuestGuard: càd: il faut etre déconnecté pour consulter la page
+// AuthGuard: cï¿½d: il faut faire la connexion pour consulter la page
+// GuestGuard: cï¿½d: il faut etre dï¿½connectï¿½ pour consulter la page
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -18,9 +18,11 @@ const routes: Routes = [
     { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [GuestGuard]},
     { path: ':id/details', loadChildren: './pages/details/details.module#DetailsPageModule' , canActivate: [AuthGuard]},
  { path: 'lieux-par-categorie/:id', loadChildren: './pages/lieux-par-categorie/lieux-par-categorie.module#LieuxParCategoriePageModule' , canActivate: [AuthGuard]},
-  { path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesPageModule', canActivate: [AuthGuard] }
+  { path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesPageModule', canActivate: [AuthGuard] },
+  { path: 'locations', loadChildren: './pages/locations/locations.module#LocationsPageModule' , canActivate: [AuthGuard] }
 ];
  
+
 
 
 @NgModule({

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>locations</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+   
+
+  <ion-card *ngFor="let item of (result.emplacements)">  
+    
+        
+        <ion-card-header>
+            <ion-grid>
+                <ion-row>
+          <ion-col size="4">
+              <img src="../../../assets/icon/location.jpg"  style="height: 80%;width: 80%;" />
+              
+          </ion-col>
+          <ion-col size="8"> 
+              <ion-card-subtitle>{{item.categorie}}</ion-card-subtitle>
+              <ion-card-title>{{item.nomEmplacement}}</ion-card-title>
+          </ion-col>
+          
+        </ion-row>
+        <ion-row>
+            <ion-col size="8"></ion-col>
+            <ion-col size="4">
+               <ion-item href="#">
+                  <ion-icon name="star" color="red" ></ion-icon>
+                  
+                </ion-item>
+          </ion-col>
+          </ion-row>
+     
+      
+      </ion-grid>
+      
+    </ion-card-header>
+    
+     
+   
+</ion-card>
+  <ion-infinite-scroll  (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    
+    
+
