@@ -19,6 +19,8 @@ const routes: Routes = [
     { path: ':id/details', loadChildren: './pages/details/details.module#DetailsPageModule' }
 
 ];
+,,  { path: 'lieux-par-categorie', loadChildren: './pages/lieux-par-categorie/lieux-par-categorie.module#LieuxParCategoriePageModule' }
+  { path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesPageModule' }
 
 
 @NgModule({
