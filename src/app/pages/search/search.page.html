@@ -6,9 +6,9 @@
 
 
 <ion-content>
-    <ion-button (click)="logout()">Logout</ion-button>
-    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="getdata($event)"></ion-searchbar><br>
-    <!-- <ion-item>
+  <ion-button (click)="logout()">Logout</ion-button>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="getdata($event)"></ion-searchbar><br>
+  <!-- <ion-item>
       <ion-label>Select Searchtype</ion-label>
       <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
         <ion-select-option value="">All</ion-select-option>
@@ -18,24 +18,28 @@
       </ion-select>
     </ion-item> -->
 
-    <ion-list>
+  <ion-list>
+    <ion-item *ngFor="let item of (result.emplacements)">
+      <ion-item button [routerLink]="['/', 'emplacements', item.id]" style="width: 100%">
 
-        <ion-item *ngFor="let item of (result.emplacements)">
-            <ion-item button [routerLink]="['/', 'emplacements', item.id]" style="width: 100%">
+        <ion-label text-wrap>
+          <h1><b>Nom: </b>{{ item.nomEmplacement }}</h1>
+          <b>Catégorie: </b>{{ item.categorie }}
+          <ion-label *ngIf="item.vote == 0"><b>Status: </b>vide</ion-label>
+          <ion-label *ngIf="item.vote == 1"><b>Status: </b>moyen</ion-label>
+          <ion-label *ngIf="item.vote == 2"><b>Status: </b>plein</ion-label>
+          <ion-label *ngIf="item.vote == 3"><b>Status: </b>fermé</ion-label>
+          <ion-label *ngIf="item.vote == 4"><b>Status: </b>non évalué</ion-label>
+        </ion-label>
+      </ion-item>
 
-                <ion-label text-wrap>
-                    <h3>{{ item.nomEmplacement }}</h3>
-                    {{ item.categorie }}
-                </ion-label>
-            </ion-item>
+      <ion-list *ngFor="let it of (resu.emplacements)" style="display: none">
+        <ion-label *ngIf="item.id == it.id">{{colorRed()}}</ion-label>
+      </ion-list>
+      <ion-button id="9{{item.id}}" class="{{fColor}}" (click)="addRemovefav(item.id)">
+        <label id="99{{item.id}}" for="{{fColor}}">Favoris</label>
+      </ion-button>
+      {{colorBlue()}}
+    </ion-item>
 
-            <ion-button fill="clear" (click)="changeIcon(item.id)">
-                <!-- <input type="text" value="{{name}}" id="{{item.id}}" style="width: 1em"> -->
-                <ion-icon id="{{item.id}}" name="ios-star-outline"></ion-icon>
-            </ion-button>
-        </ion-item>
-
-    </ion-list>
-
-
-    
+  </ion-list>
