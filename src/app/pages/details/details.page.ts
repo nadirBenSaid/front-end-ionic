@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AlertController } from '@ionic/angular';
 import {map} from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import  {DetailsService} from './../../services/details.service';
@@ -40,8 +41,10 @@ export class DetailsPage implements OnInit {
   public nomEmplacement:string;
   public adresse:string;
 
+  key: string = '';
+  
 
-  constructor(public http: HttpClient,public route: ActivatedRoute,private detailsService : DetailsService) { 
+  constructor(private alertCtrl: AlertController,public http: HttpClient,public route: ActivatedRoute,private detailsService : DetailsService) { 
       var d = new Date();
     var weekday = new Array(7);
     weekday[0] =  "dimanche";
@@ -80,4 +83,58 @@ export class DetailsPage implements OnInit {
   onSelect(day) {
     this.loadData(day);
  }
+  async onGoto(){
+   
+  const alert = await this.alertCtrl.create({
+      header: 'Voter:',
+      cssClass: 'alertcss',
+      inputs: [    
+        {
+          name: 'ferme',
+          type: 'radio',
+          label: 'Fermé',
+          value: 1 ,
+          checked: true
+        },
+        {
+          name: 'plein',
+          type: 'radio',
+          label: 'Plein',
+          value: 2
+        },
+        {
+          name: 'vide',
+          type: 'radio',
+          label: 'Vide',
+          value: 3
+        },
+        {
+          name: 'moyen',
+          type: 'radio',
+          label: 'Moyen',
+          value: 4
+        }
+      ],
+      buttons : [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Ok',
+          handler: data => {
+            this.detailsService.voter(data);
+            }
+        }
+      ]
+    });
+  
+    await alert.present();
+     
   }
+ 
+}
+  
