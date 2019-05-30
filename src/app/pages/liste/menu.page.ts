@@ -13,17 +13,19 @@ export class MenuPage  {
   constructor(   private router :Router) {
 }
     getPrivacy(){
-     this.router.navigate(['/menu/privacy']);
+     this.router.navigate(['menu']);
     }
     getLicence(){
-    this.router.navigate(['/menu/licence']);
+    this.router.navigate(['licence']);
     }
     getAccount(){
-      this.router.navigate(['/menu/account']);
-      }  
-     getPropos(){
-          this.router.navigate(['/menu/propos']);
-          }   
-               
+      this.router.navigate(['account']);
+      } 
+      getLanguage(){
+        this.router.navigate(['langage']);
+        } 
+        getPropos(){
+          this.router.navigate(['propos']);
+          }      
 
 }
