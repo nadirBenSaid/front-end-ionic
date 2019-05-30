@@ -138,7 +138,7 @@ export class DetailsPage implements OnInit {
           name: 'ferme',
           type: 'radio',
           label: 'Fermé',
-          value: 1 ,
+          value: 3 ,
           checked: true
         },
         {
@@ -151,13 +151,13 @@ export class DetailsPage implements OnInit {
           name: 'vide',
           type: 'radio',
           label: 'Vide',
-          value: 3
+          value: 0
         },
         {
           name: 'moyen',
           type: 'radio',
           label: 'Moyen',
-          value: 4
+          value: 1
         }
       ],
       buttons : [
@@ -171,7 +171,7 @@ export class DetailsPage implements OnInit {
         }, {
           text: 'Ok',
           handler: data => {
-            this.detailsService.voter(data);
+            this.detailsService.voter(data,this.id);
             }
         }
       ]
