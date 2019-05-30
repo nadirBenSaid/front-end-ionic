@@ -41,7 +41,7 @@ export class RegisterPage implements OnInit {
   ngOnInit(): void {
 
     this.villes = [
-      
+
       "Tanger",
       "Tetouan",
       "Guelmim",
@@ -75,8 +75,21 @@ export class RegisterPage implements OnInit {
       toast.present();
       return;
     }
-
-    this.registerService.register(this.registerForm.value).subscribe(
+    let formData = {
+      "adresse": this.registerForm.value.adresse,
+      "email": this.registerForm.value.email,
+      "motDePasse": this.registerForm.value.motDePasse,
+      "nom": this.registerForm.value.nom,
+      "prenom": this.registerForm.value.prenom,
+      "username": this.registerForm.value.username,
+      "ville": this.registerForm.value.ville,
+      "roles": [{
+        "roleId": 1,
+        "role": "USER"
+      }
+      ]
+    }
+    this.registerService.register(formData).subscribe(
       async (data) => {
         const toast = await this.toastController.create({
           message: 'Compte crée avec succes',
