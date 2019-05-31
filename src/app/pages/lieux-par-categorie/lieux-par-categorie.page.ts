@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 export class LieuxParCategoriePage implements OnInit {
  Id = null;
 
+  resu: any = [];
 
 
     constructor(private searchService: SearchService,private lieuxParCategorieService: LieuxParCategorieService,router: Router, private activatedRoute: ActivatedRoute) { 
