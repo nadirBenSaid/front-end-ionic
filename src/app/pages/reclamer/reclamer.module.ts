@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
 import { ReclamerPage } from './reclamer.page';
+
+import { ReclamerService } from 'src/app/services/reclamer.service';
+import{HttpClientModule} from '@angular/common/http';
+import{HttpModule} from '@angular/http';
 
 const routes: Routes = [
   {
@@ -18,8 +22,13 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes)
+  ],
+    providers: [
+    ReclamerService
   ],
   declarations: [ReclamerPage]
 })
