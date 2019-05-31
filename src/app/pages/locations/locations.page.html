@@ -6,7 +6,9 @@
 </ion-header>
 
 <ion-content padding>
-   
+   <ion-icon name="search" class="larger"  detail [routerLink]="['/', 'search']" >
+
+   </ion-icon>
           
        
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
