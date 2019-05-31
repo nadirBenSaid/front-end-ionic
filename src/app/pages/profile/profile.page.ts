@@ -35,7 +35,13 @@ export class ProfilePage implements OnInit {
             "prenom": this.result.prenom,
             "email": this.result.email,
             "adresse": this.result.adresse,
-            "ville": this.result.ville
+            "ville": this.result.ville,
+            "roles":[
+              {
+                "roleId":2,
+                "role":"USER"
+              }
+            ]
     }
 
     this.http.post(url, postData, {withCredentials: true} )
