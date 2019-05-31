@@ -37,9 +37,6 @@ getData() {
   loadData(event) {
     setTimeout(() => {
       console.log('Done');
-      for (let i = 0; i < 5; i++) { 
-        this.result.push(this.result.emplacements);
-      }
       event.target.complete();
 
       // App logic to determine if all data is loaded
