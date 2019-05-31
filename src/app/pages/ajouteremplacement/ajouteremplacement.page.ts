@@ -34,9 +34,11 @@ export class AjouteremplacementPage implements OnInit {
       "categorie": this.formulaire.categorie,
       "latitude": this.lat,
       "longitude": this.lon
-
     }
-    console.log("suggest");
-    return this.http.post(environment.url + '/emplacements/add/', postData, { withCredentials: true });
+    return this.http.post(environment.url + '/emplacements/add', postData, { withCredentials: true }).subscribe(data => {
+      console.log('suggest');
+    }, error => {
+      console.log(error);
+    });
   }
 }
