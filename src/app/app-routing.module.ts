@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'locations', loadChildren: './pages/locations/locations.module#LocationsPageModule' , canActivate: [AuthGuard] },  { path: 'licence', loadChildren: './pages/licence/licence.module#LicencePageModule' },
   { path: 'account', loadChildren: './pages/account/account.module#AccountPageModule' },
   { path: 'delete-account', loadChildren: './pages/delete-account/delete-account.module#DeleteAccountPageModule' },
-  { path: 'propos', loadChildren: './pages/propos/propos.module#ProposPageModule' }
+  { path: 'propos', loadChildren: './pages/propos/propos.module#ProposPageModule' },
+  { path: 'ajouteremplacement', loadChildren: './pages/ajouteremplacement/ajouteremplacement.module#AjouteremplacementPageModule' }
 
 ];
  
