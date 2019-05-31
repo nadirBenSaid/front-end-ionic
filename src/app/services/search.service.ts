@@ -47,7 +47,9 @@ export class SearchService {
   }
 
   removeFromFavourites(empId) {
-    return this.http.request('delete', environment.url + '/favories/delete/' + empId, { withCredentials: true });
+    let postData = {
+    }
+    return this.http.post(environment.url + '/favories/delete/' + empId, postData, { withCredentials: true });
     //delete(environment.url + '/favories/delete/' + empId , { withCredentials: true });
   }
 
