@@ -20,7 +20,11 @@ const routes: Routes = [
  { path: 'lieux-par-categorie/:id', loadChildren: './pages/lieux-par-categorie/lieux-par-categorie.module#LieuxParCategoriePageModule' , canActivate: [AuthGuard]},
   { path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesPageModule', canActivate: [AuthGuard] },
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule', canActivate: [AuthGuard] },
-  { path: 'locations', loadChildren: './pages/locations/locations.module#LocationsPageModule' , canActivate: [AuthGuard] }
+  { path: 'locations', loadChildren: './pages/locations/locations.module#LocationsPageModule' , canActivate: [AuthGuard] },  { path: 'licence', loadChildren: './pages/licence/licence.module#LicencePageModule' },
+  { path: 'account', loadChildren: './pages/account/account.module#AccountPageModule' },
+  { path: 'delete-account', loadChildren: './pages/delete-account/delete-account.module#DeleteAccountPageModule' },
+  { path: 'propos', loadChildren: './pages/propos/propos.module#ProposPageModule' }
+
 ];
  
 

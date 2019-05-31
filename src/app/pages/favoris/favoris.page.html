@@ -1,12 +1,46 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-    <ion-title>Favoris</ion-title>
+    <ion-title>
+        <ion-icon class="star" name="star">  </ion-icon>
+        favoris
+      </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="ion-padding">
+      votre favoris emplacements :
+      <ion-list>
+          <ion-item  *ngFor="let item of favoris">
+              <ion-card class="card">
+      
+                <img class="images" src="assets/icon/image1.png">
+                <ion-card-content>
+                  <ion-card-title class="categories">{{item.categorie}}
+                  </ion-card-title>
+           <p> {{item.nomEmplacement}} </p>
+           <span *ngIf="item.vote == 0">
+              <ion-icon class="colorstar1" name="star"></ion-icon>
+           </span>
+           <span *ngIf="item.vote == 1">
+              <ion-icon  class="colorstar2" name="star"></ion-icon>
+           </span>
+           <span *ngIf="item.vote == 2">
+              <ion-icon  class="colorstar3" name="star"></ion-icon>
+           </span>
+           <span *ngIf="item.vote == 4">
+            <ion-icon  class="colorstar3" name="star"></ion-icon>
+         </span>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp; 
+         <ion-button [href]="'https://www.google.com/maps/place/'+item.nomEmplacement+'/@'+item.latitude+','+item.longitude+',12z?hl=fr-FR'"> <ion-icon class="postion" name="pin"></ion-icon></ion-button>
+         &nbsp;&nbsp;&nbsp;&nbsp;<ion-button class="bs" (click)="defavoriser(item.id)">defavoriser</ion-button>
+       </ion-card-content>
+      </ion-card>
+              </ion-item>
 
+        </ion-list>
+        </div>
 </ion-content>

@@ -14,9 +14,7 @@ export class LocationsService {
 
    getUserData()
    {
-    
-   
-return this.http.get(environment.url+'/emplacements/', { withCredentials: true });  
-  }
+    return this.http.get(environment.url+'/emplacements/', { withCredentials: true });  
+}
 
 }

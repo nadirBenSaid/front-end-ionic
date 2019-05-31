@@ -9,7 +9,6 @@
 </ion-header>
 <br><br>
 <ion-content>
-
 	<ion-item no-lines>
 		 <ion-icon name="pin" slot="start"></ion-icon>
      <ion-label text-wrap>
@@ -20,6 +19,14 @@
   </ion-label>
  <br><br>
 </ion-item>
+
+<ion-list *ngFor="let it of (resu.emplacements)" style="display: none">
+  <ion-label *ngIf="this.emplacements.emplacement.id == it.id">{{colorRed()}}</ion-label>
+</ion-list>
+<ion-button id="9{{this.emplacements.emplacement.id}}" class="{{fColor}}" (click)="addRemovefav(this.emplacements.emplacement.id)">
+  <label id="99{{this.emplacements.emplacement.id}}" for="{{fColor}}">Favoris</label>
+</ion-button>
+{{colorBlue()}}
 
 <ion-list>
   <ion-item>
