@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { environment } from '../../environments/environment';
+import { Storage } from '@ionic/storage';
 
 // Typescript custom enum for search types (optional)
 export enum SearchType {
@@ -17,8 +18,11 @@ export enum SearchType {
 })
 export class SearchService {
 
+  usernameAndPassword:string;
   latALon: string = "";
-  constructor(private http: HttpClient, private geolocation: Geolocation) {
+
+  constructor(private http: HttpClient, private geolocation: Geolocation, public storage: Storage) {
+    
     this.location();
   }
 
@@ -34,21 +38,34 @@ export class SearchService {
   }
 
   getSearchData(lieu: string): Observable<any> {
-    return this.http.get(environment.url + '/emplacements/query/' + lieu + '/100000/' + this.latALon, { withCredentials: true });
+    let myHeaders: HttpHeaders = new HttpHeaders();
+        myHeaders = myHeaders.append('Authorization', 'Basic YWxpOmFsaQ==');
+
+    return this.http.get(environment.url + '/emplacements/query/' + lieu + '/100000/' + this.latALon, {headers: myHeaders, withCredentials: true });
   }
 
   addToFavourites(empId) {
+
+    let myHeaders: HttpHeaders = new HttpHeaders();
+        myHeaders = myHeaders.append('Authorization', 'Basic YWxpOmFsaQ==');
     let postData = {
     }
-    return this.http.post(environment.url + '/favories/add/' + empId, postData, { withCredentials: true });
+    return this.http.post(environment.url + '/favories/add/' + empId, postData, { headers: myHeaders,withCredentials: true });
   }
   favories() {
+
     return this.http.get(environment.url + '/favories', { withCredentials: true });
   }
 
-  removeFromFavourites(empId) {
-    return this.http.request('delete', environment.url + '/favories/delete/' + empId, { withCredentials: true });
+  removeFromFavourites(empId) { 
+
+    let myHeaders: HttpHeaders = new HttpHeaders();
+        myHeaders = myHeaders.append('Authorization', 'Basic YWxpOmFsaQ==');  
+    let postData = {
+    }
+    return this.http.post(environment.url + '/favories/delete/' + empId, postData, {  headers: myHeaders, withCredentials: true });
     //delete(environment.url + '/favories/delete/' + empId , { withCredentials: true });
   }
 
 }
+

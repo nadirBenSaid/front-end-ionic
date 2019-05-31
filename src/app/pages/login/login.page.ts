@@ -34,6 +34,7 @@ export class LoginPage implements OnInit {
         this.loginService.authenticate(username, password).subscribe(data => {
             this.result = data;
             this.storage.set(this.key, JSON.stringify(this.result.user));
+            this.storage.set('connexion', btoa(username+':'+password));
     //        console.log(this.result.user.id);
 
             this.router.navigateByUrl('/search');

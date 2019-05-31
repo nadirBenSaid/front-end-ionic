@@ -1,3 +1,4 @@
+import { SearchService, SearchType } from 'src/app/services/search.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -13,11 +14,53 @@ import { Observable } from 'rxjs';
 export class LieuxParCategoriePage implements OnInit {
  Id = null;
 
+  resu: any = [];
 
 
-    constructor(private lieuxParCategorieService: LieuxParCategorieService,router: Router, private activatedRoute: ActivatedRoute) { 
+    constructor(private searchService: SearchService,private lieuxParCategorieService: LieuxParCategorieService,router: Router, private activatedRoute: ActivatedRoute) { 
+      this.searchService.favories().subscribe(
+      (data) => {
+        this.resu = data;
+        console.log(this.resu);
+      },
+      (error) => {
+        console.log(error);
+      });
   this.getData();
 }
+
+fColor= "primary";
+  colorRed() {
+    this.fColor = "danger";
+  }
+  colorBlue() {
+    this.fColor = "primary";
+  }
+
+  //add or remove favorites depending on the color (also change color on click)
+  addRemovefav(id) {
+    if ((<HTMLInputElement>document.getElementById("99" + id)).getAttribute("for") == "danger") {
+      this.searchService.removeFromFavourites(id).subscribe(data => {
+        console.log('removed');
+      }, error => {
+        console.log(error);
+      });
+      (<HTMLInputElement>document.getElementById("9" + id))
+        .setAttribute("class", "primary sc-ion-button-md-h md button button-solid ion-activatable ion-focusable hydrated button-small activated");
+      (<HTMLInputElement>document.getElementById("99" + id)).setAttribute("for", "primary");
+    }
+    else {
+      this.searchService.addToFavourites(id).subscribe(data => {
+        console.log('added');
+      }, error => {
+        console.log(error);
+      });
+      (<HTMLInputElement>document.getElementById("9" + id))
+        .setAttribute("class", "danger sc-ion-button-md-h md button button-solid ion-activatable ion-focusable hydrated button-small activated");
+      (<HTMLInputElement>document.getElementById("99" + id)).setAttribute("for", "danger");
+    }
+  }
+
 
   ngOnInit() {
 
