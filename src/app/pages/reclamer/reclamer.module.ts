@@ -9,6 +9,7 @@ import { ReclamerPage } from './reclamer.page';
 
 import { ReclamerService } from 'src/app/services/reclamer.service';
 import{HttpClientModule} from '@angular/common/http';
+import {IonicStorageModule} from '@ionic/Storage';
 import{HttpModule} from '@angular/http';
 
 const routes: Routes = [
@@ -24,11 +25,13 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    IonicModule,
+    IonicModule, 
+    IonicStorageModule.forRoot(),
     RouterModule.forChild(routes)
   ],
-    providers: [
+   providers: [
     ReclamerService
+
   ],
   declarations: [ReclamerPage]
 })

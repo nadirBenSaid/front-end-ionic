@@ -15,11 +15,9 @@ import{ Http, Headers, RequestOptions} from '@angular/http';
 export class ReclamerPage implements OnInit {
 
   formulaire = { titre: "", message: ""};
-  result: any = [];
-  key: string = 'result';
-  data: Observable<any>;
 
-  constructor(private router: Router, public http: HttpClient, public storage: Storage, private reclamerService: ReclamerService) {
+
+  constructor(private router: Router, public http: HttpClient, private reclamerService: ReclamerService) {
   }
 
 ngOnInit(){
