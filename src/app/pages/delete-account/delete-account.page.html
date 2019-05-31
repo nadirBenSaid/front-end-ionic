@@ -1,0 +1,34 @@
+<ion-header class="dc">
+  <ion-toolbar>
+          <ion-buttons slot="start">
+          <ion-back-button defaultHref="/" color="light"></ion-back-button>
+          </ion-buttons>
+    <ion-title color="light">Suppression</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="dc">
+  <ion-text class="aa">
+    <h5 class="ion-padding-start" ><ion-icon name="alert"></ion-icon> la suppression de votre compte va :</h5>
+  </ion-text>
+  <ion-text color="light">
+    <p class="ion-padding-start">supprimer votre compte en isBusy d'une facon définitive</p>
+  </ion-text>
+ 
+  <ion-text color="light"  >
+      <p class="ion-padding-start"> pour supprimer votre compte veuillez confirmer votre email et saisir le mot de passe</p>
+    </ion-text>
+    
+      <ion-item>
+        <ion-label position="stacked" color="light" class="lb">Email</ion-label>
+        <ion-input class="ion-text-center" inputMode="email" required="true" color="light" class="dc"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="stacked" color="light" class="lb">Mot de passe</ion-label>
+          <ion-input inputMode="password" required="true" color="light"></ion-input>
+      </ion-item>
+
+      <ion-button color="light" size="small" style="margin-left: 50px; margin-top: 20px;">Supprimer mon compte</ion-button>
+
+</ion-content>

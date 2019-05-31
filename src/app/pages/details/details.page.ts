@@ -5,6 +5,7 @@ import { AlertController } from '@ionic/angular';
 import {map} from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import  {DetailsService} from './../../services/details.service';
+import { SearchService, SearchType } from './../../services/search.service';
 
 
 @Component({
@@ -42,10 +43,11 @@ export class DetailsPage implements OnInit {
   public adresse:string;
 
   key: string = '';
-  
+  resu: any = [];
 
-  constructor(private alertCtrl: AlertController,public http: HttpClient,public route: ActivatedRoute,private detailsService : DetailsService) { 
-      var d = new Date();
+  constructor(private searchService: SearchService, private alertCtrl: AlertController,public http: HttpClient,public route: ActivatedRoute,private detailsService : DetailsService) { 
+    console.log(this.fColor);  
+    var d = new Date();
     var weekday = new Array(7);
     weekday[0] =  "dimanche";
     weekday[1] = "lundi";
@@ -57,6 +59,17 @@ export class DetailsPage implements OnInit {
 
     var n = weekday[d.getDay()];
     this.loadData(n);
+
+    //connected user favorites
+    this.searchService.favories().subscribe(
+      (data) => {
+        this.resu = data;
+        console.log(this.resu);
+      },
+      (error) => {
+        console.log(error);
+      });
+      console.log("res"+this.resu);
   }
 
    ngOnInit() {
@@ -79,10 +92,42 @@ export class DetailsPage implements OnInit {
 
   }
 
- 
   onSelect(day) {
     this.loadData(day);
  }
+
+  //change button color if the emp is one of the users favourites
+  fColor= "primary";
+  colorRed() {
+    this.fColor = "danger";
+  }
+  colorBlue() {
+    this.fColor = "primary";
+  }
+  //add or remove favorites depending on the color (also change color on click)
+  addRemovefav(id) {
+    if ((<HTMLInputElement>document.getElementById("99" + id)).getAttribute("for") == "danger") {
+      console.log('removed');
+      this.searchService.removeFromFavourites(id).subscribe(data => {
+      }, error => {
+        console.log(error);
+      });
+      (<HTMLInputElement>document.getElementById("9" + id))
+        .setAttribute("class", "primary sc-ion-button-md-h md button button-solid ion-activatable ion-focusable hydrated button-small activated");
+      (<HTMLInputElement>document.getElementById("99" + id)).setAttribute("for", "primary");
+    }
+    else {
+      this.searchService.addToFavourites(id).subscribe(data => {
+        console.log('added');
+      }, error => {
+        console.log(error);
+      });
+      (<HTMLInputElement>document.getElementById("9" + id))
+        .setAttribute("class", "danger sc-ion-button-md-h md button button-solid ion-activatable ion-focusable hydrated button-small activated");
+      (<HTMLInputElement>document.getElementById("99" + id)).setAttribute("for", "danger");
+    }
+  }
+
   async onGoto(){
    
   const alert = await this.alertCtrl.create({
@@ -93,7 +138,7 @@ export class DetailsPage implements OnInit {
           name: 'ferme',
           type: 'radio',
           label: 'Fermé',
-          value: 1 ,
+          value: 3 ,
           checked: true
         },
         {
@@ -106,13 +151,13 @@ export class DetailsPage implements OnInit {
           name: 'vide',
           type: 'radio',
           label: 'Vide',
-          value: 3
+          value: 0
         },
         {
           name: 'moyen',
           type: 'radio',
           label: 'Moyen',
-          value: 4
+          value: 1
         }
       ],
       buttons : [
@@ -126,7 +171,7 @@ export class DetailsPage implements OnInit {
         }, {
           text: 'Ok',
           handler: data => {
-            this.detailsService.voter(data);
+            this.detailsService.voter(data,this.id);
             }
         }
       ]
@@ -135,6 +180,6 @@ export class DetailsPage implements OnInit {
     await alert.present();
      
   }
- 
+
 }
   

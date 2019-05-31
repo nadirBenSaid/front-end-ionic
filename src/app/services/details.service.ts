@@ -20,7 +20,7 @@ export class DetailsService {
 
   	}
 
-  voter(v) {
+  voter(v,id) {
     var d = new Date();
     var weekday = new Array(7);
     weekday[0] =  "dimanche";
@@ -38,14 +38,14 @@ export class DetailsService {
   	myHeaders = myHeaders.append('Authorization','Basic YWxpOmFsaQ==');
 
   	 let postData = {
-            "vote":v,
-            "jour":n,
-            "heure":h,
+            "vote": v,
+            "jour": n,
+            "heure": h,
 
     }
     
     
-  	return this.http.post(environment.url+'/emplacements/'+this.id+'/evaluer',postData,
+  	return this.http.post(environment.url+'/emplacements/'+id+'/evaluer',postData,
   		{ headers: myHeaders, withCredentials: true}).subscribe(data => {
         console.log(data);
        }, 

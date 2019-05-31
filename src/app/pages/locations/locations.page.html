@@ -1,16 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>locations</ion-title>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
    
-
-  <ion-card *ngFor="let item of (result.emplacements)">  
-    
-        
-        <ion-card-header>
+  <ion-title>Liste des locations</ion-title>
+  <ion-card *ngFor="let item of (result.emplacements)" detail [routerLink]="['/', item.id,'details']">  
+    <ion-card-header>
             <ion-grid>
                 <ion-row>
           <ion-col size="4">
@@ -18,7 +16,7 @@
               
           </ion-col>
           <ion-col size="8"> 
-              <ion-card-subtitle>{{item.categorie}}</ion-card-subtitle>
+              <ion-card-subtitle>{{item.categorie}} </ion-card-subtitle>
               <ion-card-title>{{item.nomEmplacement}}</ion-card-title>
           </ion-col>
           
@@ -41,7 +39,7 @@
      
    
 </ion-card>
-  <ion-infinite-scroll  (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
         loadingText="Loading more data...">

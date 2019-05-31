@@ -4,6 +4,7 @@ import { LocationsService } from './../../services/locations.service';
 import { HttpHeaders , HttpClient } from '@angular/common/http';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
   selector: 'app-locations',

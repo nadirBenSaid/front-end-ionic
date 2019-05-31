@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Router} from "@angular/router";
+import { ReclamerService } from './../../services/reclamer.service';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import{ Http, Headers, RequestOptions} from '@angular/http';
+
+
 
 @Component({
   selector: 'app-reclamer',
@@ -9,19 +14,24 @@ import { Observable } from 'rxjs';
 })
 export class ReclamerPage implements OnInit {
 
-  constructor(private http: HttpClient) { }
-
-  ngOnInit() {
-  }
+  formulaire = { titre: "", message: ""};
+  result: any = [];
+  key: string = 'result';
   data: Observable<any>;
-postData(){
-	var url ="";
-	let postData = new FormData();
-	postData.append('key','value');
-	postData.append('username','info@gmail.com');
-	this.data=this.http.post(url, postData);
-	this.data.subscribe(data =>{
-	console.log(data);
-	});
+
+  constructor(private router: Router, public http: HttpClient, public storage: Storage, private reclamerService: ReclamerService) {
+  }
+
+ngOnInit(){
+}
+
+reclamer(form){
+  
+var titre = this.formulaire.titre;
+var message = this.formulaire.message;
+
+
+this.reclamerService.reclamer(titre,message);
+
 }
 }
