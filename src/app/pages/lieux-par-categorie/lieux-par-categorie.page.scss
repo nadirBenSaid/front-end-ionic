@@ -1,5 +1,14 @@
 ion-toolbar
 {
---background:  #FFF66E;
+--background:  #FFCB61;
 
+}
+.b {
+color: danger;
+}
+.danger{ 
+    --background: red; 
+}
+.primary{ 
+    --background: green;
 }
