@@ -45,8 +45,7 @@ export class DetailsPage implements OnInit {
   key: string = '';
   resu: any = [];
 
-  constructor(private searchService: SearchService, private alertCtrl: AlertController,public http: HttpClient,public route: ActivatedRoute,private detailsService : DetailsService) { 
-    console.log(this.fColor);  
+  constructor(private searchService: SearchService, private alertCtrl: AlertController,public http: HttpClient,public route: ActivatedRoute,private detailsService : DetailsService) {   
     var d = new Date();
     var weekday = new Array(7);
     weekday[0] =  "dimanche";
@@ -69,7 +68,6 @@ export class DetailsPage implements OnInit {
       (error) => {
         console.log(error);
       });
-      console.log("res"+this.resu);
   }
 
    ngOnInit() {
