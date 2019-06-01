@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationsService } from './../../services/locations.service';
@@ -5,6 +6,7 @@ import { HttpHeaders , HttpClient } from '@angular/common/http';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { IonInfiniteScroll } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-locations',
@@ -16,7 +18,8 @@ export class LocationsPage implements OnInit {
  
  data:Observable<any>;
  result: any=[];
-isCafe = false;
+
+
 
  //public catData: Array<{ title: string; id: string; icon: string }> = [];
 
@@ -38,9 +41,6 @@ getData() {
   loadData(event) {
     setTimeout(() => {
       console.log('Done');
-      for (let i = 0; i < 5; i++) { 
-        this.result.push(this.result.emplacements);
-      }
       event.target.complete();
 
       // App logic to determine if all data is loaded
@@ -51,6 +51,9 @@ getData() {
     }, 500);
     
   }
+
+ 
+
   
 
   constructor(private locationsService: LocationsService,router: Router, public http: HttpClient) {

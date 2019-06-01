@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ajouteremplacement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="image" text-center>
+        <img alt="logo" id="header_logo" height="100" float-right src="assets/icon/image1.png">
+      </div>
+      <ion-item>
+        <ion-label class="my-label" color="primary" size position="floating">Nom de l'emplacement</ion-label>
+        <ion-input rows="4" [(ngModel)]="formulaire.nomEmplacement"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="my-label" color="primary" size position="floating">Catégorie</ion-label>
+        <ion-input rows="4" [(ngModel)]="formulaire.categorie"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="my-label" color="primary" size position="floating">Latitude</ion-label>
+        <ion-input rows="4" [(ngModel)]="formulaire.latitude"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="my-label" color="primary" size position="floating">Longitude</ion-label>
+        <ion-input rows="4" [(ngModel)]="formulaire.longitude"></ion-input>
+      </ion-item>
+      <ion-button class="bouton" color="primary" position="center" (click)="suggerer()">Envoyer</ion-button>    
+</ion-content>

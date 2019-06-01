@@ -84,7 +84,7 @@ export class RegisterPage implements OnInit {
       "username": this.registerForm.value.username,
       "ville": this.registerForm.value.ville,
       "roles": [{
-        "roleId": 1,
+        "roleId": 2,
         "role": "USER"
       }
       ]

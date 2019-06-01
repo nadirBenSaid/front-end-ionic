@@ -45,19 +45,15 @@ export class DetailsPage implements OnInit {
   key: string = '';
   resu: any = [];
 
-  constructor(private searchService: SearchService, private alertCtrl: AlertController,public http: HttpClient,public route: ActivatedRoute,private detailsService : DetailsService) { 
-    console.log(this.fColor);  
-    var d = new Date();
-    var weekday = new Array(7);
-    weekday[0] =  "dimanche";
-    weekday[1] = "lundi";
-    weekday[2] = "mardi";
-    weekday[3] = "mercredi";
-    weekday[4] = "jeudi";
-    weekday[5] = "vendredi";
-    weekday[6] = "samedi";
+    d: Date = new Date();
+    // weekday = new Array(7);
+    weekday: string[] = ["dimanche", "lundi", "mardi","mercredi","jeudi","vendredi","samedi"];
 
-    var n = weekday[d.getDay()];
+
+  constructor(private searchService: SearchService, private alertCtrl: AlertController,public http: HttpClient,public route: ActivatedRoute,private detailsService : DetailsService) {   
+    
+
+    var n = this.weekday[this.d.getDay()];
     this.loadData(n);
 
     //connected user favorites
@@ -69,7 +65,6 @@ export class DetailsPage implements OnInit {
       (error) => {
         console.log(error);
       });
-      console.log("res"+this.resu);
   }
 
    ngOnInit() {
@@ -172,6 +167,8 @@ export class DetailsPage implements OnInit {
           text: 'Ok',
           handler: data => {
             this.detailsService.voter(data,this.id);
+            var n = this.weekday[this.d.getDay()];
+            this.loadData(n);
             }
         }
       ]

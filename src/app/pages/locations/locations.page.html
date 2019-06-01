@@ -1,50 +1,69 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+     
+          <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-   
-  <ion-title>Liste des locations</ion-title>
-  <ion-card *ngFor="let item of (result.emplacements)" detail [routerLink]="['/', item.id,'details']">  
+   <ion-icon name="search" class="larger"  detail [routerLink]="['/', 'search']" >
+
+   </ion-icon>
+          
+       
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      
+  <ion-card *ngFor="let item of (result.emplacements)" detail [routerLink]="['/', item.id,'details']"> 
+
     <ion-card-header>
             <ion-grid>
                 <ion-row>
-          <ion-col size="4">
-              <img src="../../../assets/icon/location.jpg"  style="height: 80%;width: 80%;" />
-              
+
+          <ion-col size="4" >
+              <img *ngIf="item.categorie=='Café' || item.categorie=='Coffee Shop'" src="../../../assets/icon/coffee_shop.jpg"    style="height: 60px;width: 60px;" />
+              <img *ngIf="item.categorie!='Café' && item.categorie!='Coffee Shop'"  src="../../../assets/icon/locationYellow.png"   style="height: 60px;width: 60px;" />
+
           </ion-col>
+         
           <ion-col size="8"> 
               <ion-card-subtitle>{{item.categorie}} </ion-card-subtitle>
               <ion-card-title>{{item.nomEmplacement}}</ion-card-title>
           </ion-col>
           
         </ion-row>
-        <ion-row>
-            <ion-col size="8"></ion-col>
-            <ion-col size="4">
-               <ion-item href="#">
-                  <ion-icon name="star" color="red" ></ion-icon>
-                  
-                </ion-item>
-          </ion-col>
-          </ion-row>
+     
      
       
       </ion-grid>
       
     </ion-card-header>
-    
-     
-   
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+              <div>
+                  <ion-label *ngIf="item.vote == 0"><b>Status: </b>vide</ion-label>
+                  <ion-label *ngIf="item.vote == 1"><b>Status: </b>moyen</ion-label>
+                  <ion-label *ngIf="item.vote == 2"><b>Status: </b>plein</ion-label>
+                  <ion-label *ngIf="item.vote == 3"><b>Status: </b>fermé</ion-label>
+                  <ion-label *ngIf="item.vote == 4"><b>Status: </b>non évalué</ion-label>
+                </div>
+
+          </ion-col>
+          
+        </ion-row>
+      </ion-grid>
+  
+        
+    </ion-card-content>
 </ion-card>
-  <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="Loading more data...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+<ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+</ion-infinite-scroll-content>
+</ion-infinite-scroll>
+     
+    
 
     
     

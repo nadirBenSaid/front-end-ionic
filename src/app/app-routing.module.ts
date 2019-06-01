@@ -31,6 +31,10 @@ const routes: Routes = [
  
 
 
+=======
+  { path: 'propos', loadChildren: './pages/propos/propos.module#ProposPageModule' },
+  { path: 'ajouteremplacement', loadChildren: './pages/ajouteremplacement/ajouteremplacement.module#AjouteremplacementPageModule' }
+>>>>>>> ac2f95ee745ab49c7b8092c6c62bd2f6d27f4143
 
 @NgModule({
   imports: [
