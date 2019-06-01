@@ -1,8 +1,11 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Recherche</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Search</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 
 <ion-content>
@@ -12,7 +15,6 @@
       <!-- <ion-button id="9{{idd}}" class="primary" (click)="addRemovefav(idd)">
         <label id="99{{idd}}" for="primary">Favoris</label>
       </ion-button> <br> -->
-  <ion-button (click)="logout()">Logout</ion-button>
   <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="getdata($event)"></ion-searchbar><br>
   <!-- <ion-item>
       <ion-label>Select Searchtype</ion-label>

@@ -25,7 +25,7 @@ export class GuestGuard implements CanActivate {
                     resolve(true);
                 } else {
                     console.log("You are already logged in");
-                    this.router.navigateByUrl('/search');
+                    this.router.navigateByUrl('/menu/search');
                     resolve(false);
                 }
             });

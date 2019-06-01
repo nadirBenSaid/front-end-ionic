@@ -10,11 +10,19 @@
       </div>
       <ion-item>
         <ion-label class="my-label" color="primary" size position="floating">Nom de l'emplacement</ion-label>
-        <ion-input rows="4" placeholder="Saisissez votre suggestion" [(ngModel)]="formulaire.nomEmplacement"></ion-input>
+        <ion-input rows="4" [(ngModel)]="formulaire.nomEmplacement"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label class="my-label" color="primary" size position="floating">Catégorie</ion-label>
-        <ion-input rows="4" placeholder="Saisissez la catégorie" [(ngModel)]="formulaire.categorie"></ion-input>
+        <ion-input rows="4" [(ngModel)]="formulaire.categorie"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="my-label" color="primary" size position="floating">Latitude</ion-label>
+        <ion-input rows="4" [(ngModel)]="formulaire.latitude"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="my-label" color="primary" size position="floating">Longitude</ion-label>
+        <ion-input rows="4" [(ngModel)]="formulaire.longitude"></ion-input>
       </ion-item>
       <ion-button class="bouton" color="primary" position="center" (click)="suggerer()">Envoyer</ion-button>    
 </ion-content>

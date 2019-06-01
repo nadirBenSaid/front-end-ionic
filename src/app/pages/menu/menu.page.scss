@@ -1,11 +1,16 @@
-.active-item{
-    border-left: 8px solid #f6b93b;
+.active {
+    --ion-text-color: var(--ion-color-primary);
+ 
+    ion-icon {
+        --ion-text-color-rgb: var(--ion-color-primary);
+    }
 }
-
-.contenu{
-   --ion-background-color: black;
+ 
+.parent-active {
+    font-weight: 500;
 }
-
-.item {
-    color:white;
+ 
+.sub-item {
+    padding-left: 20px;
+    font-size: small;
 }

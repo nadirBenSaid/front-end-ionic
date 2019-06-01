@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
             this.storage.set('connexion', btoa(username+':'+password));
     //        console.log(this.result.user.id);
 
-            this.router.navigateByUrl('/search');
+            this.router.navigateByUrl('/menu/search');
         },
             error => {
                 this.result = { "error": "Echec d'authentification !" };

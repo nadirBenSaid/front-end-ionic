@@ -18,10 +18,10 @@ export class DetailsPage implements OnInit {
   public id:string;
   public sysDateDay:string;
   public emplacements:any;
-  public barChartLabels:string[] = ['8h','9h','10h',
+  public barChartLabels:string[] = ['7h','8h','9h','10h',
   '11h','12h','13h',
   '14h','15h','16h',
-  '17h','18h','19h','20h','21h'];
+  '17h','18h','19h','20h','21h','22h','23h'];
   public barChartData:number[] = [ 4 , 2 , 3, 3,
   4 , 2 , 3, 3,4 , 2 , 3, 3,1,2];
   public barChatType:string = 'bar';
@@ -78,10 +78,11 @@ export class DetailsPage implements OnInit {
       this.nomEmplacement = this.emplacements.emplacement.nomEmplacement;
       this.nomEmplacement = this.emplacements.emplacement.categorie;
       
-      this.barChartData = [this.emplacements.stats["8"], this.emplacements.stats["9"] ,
+      this.barChartData = [this.emplacements.stats["7"],this.emplacements.stats["8"], this.emplacements.stats["9"] ,
       this.emplacements.stats["10"], this.emplacements.stats["11"],this.emplacements.stats["12"], this.emplacements.stats["13"] , 
       this.emplacements.stats["14"], this.emplacements.stats["15"],this.emplacements.stats["16"], this.emplacements.stats["17"] , 
-      this.emplacements.stats["18"], this.emplacements.stats["19"],this.emplacements.stats["20"], this.emplacements.stats["21"]];
+      this.emplacements.stats["18"], this.emplacements.stats["19"],this.emplacements.stats["20"], this.emplacements.stats["21"],
+      this.emplacements.stats["22"],this.emplacements.stats["23"]];
       this.sysDateDay = day;
           }); 
 
