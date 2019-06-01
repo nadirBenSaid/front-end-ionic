@@ -28,7 +28,7 @@
 
   <ion-list>
     <ion-item *ngFor="let item of (result.emplacements)">
-      <ion-item button [routerLink]="['/', item.id,'details' ]" style="width: 100%">
+      <ion-item button [routerLink]="['/','menu', item.id,'details' ]" style="width: 100%">
 
         <ion-label text-wrap>
           <h1><b>Nom: </b>{{ item.nomEmplacement }}</h1>

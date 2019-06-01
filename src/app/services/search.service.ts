@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
+
 import { environment } from '../../environments/environment';
 import { Storage } from '@ionic/storage';
 
@@ -21,9 +25,61 @@ export class SearchService {
   usernameAndPassword:string;
   latALon: string = "";
 
-  constructor(private http: HttpClient, private geolocation: Geolocation, public storage: Storage) {
+  constructor(
+    private http: HttpClient, 
+    public storage: Storage,
+    private androidPermissions: AndroidPermissions,
+    private geolocation: Geolocation,
+    private locationAccuracy: LocationAccuracy
+    ) {
     
     this.location();
+  }
+
+
+//Check if application having GPS access permission  
+  checkGPSPermission() {
+    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
+      result => {
+        this.requestGPSPermission();
+        if (result.hasPermission) {
+ 
+          //If having permission show 'Turn On GPS' dialogue
+          this.askToTurnOnGPS();
+        }
+      },
+      err => {
+        alert(err);
+      }
+    );
+  }
+ 
+  requestGPSPermission() {
+    this.locationAccuracy.canRequest().then((canRequest: boolean) => {
+
+        //Show 'GPS Permission Request' dialogue
+        this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+          .then(
+            () => {
+              // call method to turn on GPS
+              this.askToTurnOnGPS();
+            },
+            error => {
+              //Show alert if user click on 'No Thanks'
+              alert('requestPermission Error requesting location permissions ' + error)
+            }
+          );
+      
+    });
+  }
+ 
+  askToTurnOnGPS() {
+    this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+      () => {
+        // When GPS Turned ON call method to get Accurate location coordinates
+        this.location()
+      }
+    );
   }
 
   location() {
