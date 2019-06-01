@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './../../services/register.service'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
+import { LoginService } from 'src/app/services/login.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +13,7 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  result: any = [];
 
   registerForm: FormGroup;
 
@@ -17,7 +22,10 @@ export class RegisterPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private router:Router,
+    private loginService: LoginService,
+    public storage: Storage
   ) { }
 
   MustMatch(controlName: string, matchingControlName: string) {
@@ -97,6 +105,26 @@ export class RegisterPage implements OnInit {
         });
         toast.present();
         this.registerForm.reset();
+
+    
+          var username1 = formData.username;
+          var password1 = formData.motDePasse;
+  
+          this.loginService.authenticate(username1, password1).subscribe(data => {
+              this.result = data;
+              this.storage.set('result', JSON.stringify(this.result.user));
+               console.log(this.result.user.id);
+  
+              this.router.navigateByUrl('/menu/search');
+          },
+              error => {
+                  this.result = { "error": "Echec d'authentification !" };
+              });
+  
+      
+
+
+
       },
       async (error) => {
         const toast = await this.toastController.create({

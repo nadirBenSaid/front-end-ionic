@@ -13,10 +13,8 @@ export class DetailsService {
   constructor(private http: HttpClient,public route: ActivatedRoute) {}
   public id:string;
   	details(id,jour){
-  		let myHeaders: HttpHeaders = new HttpHeaders();
-  		myHeaders = myHeaders.append('Authorization','Basic YWxpOmFsaQ==');
   		return this.http.get(environment.url+
-  			'/emplacements/'+id+'/'+jour,{ headers: myHeaders, withCredentials: true});
+  			'/emplacements/'+id+'/'+jour,{ withCredentials: true});
 
   	}
 
@@ -34,8 +32,7 @@ export class DetailsService {
     var n = weekday[d.getDay()];
     var h = d.getHours();
     this.id = this.route.snapshot.paramMap.get('id');
-  	let myHeaders: HttpHeaders = new HttpHeaders();
-  	myHeaders = myHeaders.append('Authorization','Basic YWxpOmFsaQ==');
+
 
   	 let postData = {
             "vote": v,
@@ -46,7 +43,7 @@ export class DetailsService {
     
     
   	return this.http.post(environment.url+'/emplacements/'+id+'/evaluer',postData,
-  		{ headers: myHeaders, withCredentials: true}).subscribe(data => {
+  		{ withCredentials: true}).subscribe(data => {
         console.log(data);
        }, 
        error => {

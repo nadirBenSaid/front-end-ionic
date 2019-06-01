@@ -18,7 +18,7 @@ export class FavorisPage implements OnInit {
   router: any;
 
   constructor(private searchService: SearchService, favorisService: FavorisService, private route: Router) {
-    favorisService.getFavoris('', '').subscribe(
+    favorisService.getFavoris().subscribe(
       res => {
         console.log(res);
         this.favoris = res.emplacements;

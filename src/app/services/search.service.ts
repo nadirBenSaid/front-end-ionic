@@ -94,19 +94,16 @@ export class SearchService {
   }
 
   getSearchData(lieu: string): Observable<any> {
-    let myHeaders: HttpHeaders = new HttpHeaders();
-        myHeaders = myHeaders.append('Authorization', 'Basic YWxpOmFsaQ==');
 
-    return this.http.get(environment.url + '/emplacements/query/' + lieu + '/100000/' + this.latALon, {headers: myHeaders, withCredentials: true });
+
+    return this.http.get(environment.url + '/emplacements/query/' + lieu + '/100000/' + this.latALon, {withCredentials: true });
   }
 
   addToFavourites(empId) {
 
-    let myHeaders: HttpHeaders = new HttpHeaders();
-        myHeaders = myHeaders.append('Authorization', 'Basic YWxpOmFsaQ==');
     let postData = {
     }
-    return this.http.post(environment.url + '/favories/add/' + empId, postData, { headers: myHeaders,withCredentials: true });
+    return this.http.post(environment.url + '/favories/add/' + empId, postData, { withCredentials: true });
   }
   favories() {
 
@@ -115,11 +112,9 @@ export class SearchService {
 
   removeFromFavourites(empId) { 
 
-    let myHeaders: HttpHeaders = new HttpHeaders();
-        myHeaders = myHeaders.append('Authorization', 'Basic YWxpOmFsaQ==');  
     let postData = {
     }
-    return this.http.post(environment.url + '/favories/delete/' + empId, postData, {  headers: myHeaders, withCredentials: true });
+    return this.http.post(environment.url + '/favories/delete/' + empId, postData, {  withCredentials: true });
     //delete(environment.url + '/favories/delete/' + empId , { withCredentials: true });
   }
 

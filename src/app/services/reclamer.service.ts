@@ -13,15 +13,14 @@ export class ReclamerService {
 
   constructor(private http: HttpClient, public route: ActivatedRoute) { }
   reclamer(t,m){
-  let myHeaders: HttpHeaders = new HttpHeaders();
-  myHeaders = myHeaders.append('Authorization','Basic YWxpOmFsaQ==');
+
 
   let postData={
   "titre":t,
   "message":m,
   }
   return this.http.post(environment.url+'/reclamations/add',postData,
-  {headers:myHeaders, withCredentials: true}).subscribe(data=>{
+  { withCredentials: true}).subscribe(data=>{
   console.log(data);
   },
   error=>{

@@ -1,69 +1,76 @@
-
 <ion-header>
-    <ion-toolbar color="dark">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-            <ion-title><ion-icon class="star" name="star">  </ion-icon>
-              favoris</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content padding>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-icon class="star" name="star"> </ion-icon>
+      favoris
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-          
-                <ion-card  *ngFor="let item of favoris">
-                  <ion-card-header>
-                      <ion-grid>
-                          <ion-row>
-                              <ion-col size="4" >
-                                  <img *ngIf="item.categorie=='Café' || item.categorie=='Coffee Shop'" src="../../../assets/icon/coffee_shop.jpg"    style="height: 60px;width: 60px;" />
-                                  <img *ngIf="item.categorie!='Café' && item.categorie!='Coffee Shop'"  src="../../../assets/icon/locationYellow.png"   style="height: 60px;width: 60px;" />
-                    
-                              </ion-col>
-                              <ion-col size="8"> 
-                                  <ion-card-subtitle>{{item.categorie}} </ion-card-subtitle>
-                                  <ion-card-title>{{item.nomEmplacement}}</ion-card-title>
-                                  <ion-card-subtitle detail [routerLink]="['/', item.id,'details']">voir plus</ion-card-subtitle>
-                              </ion-col>
-                              
-                            </ion-row>
-                         
-                         
-                          
-                          </ion-grid>
-                          
-                        </ion-card-header>
-                        <ion-card-content>
-                            <ion-grid>
-                              <ion-row>
-                                <ion-col size="6">
-                                    <div>
-                                        <ion-label *ngIf="item.vote == 0"><b>Status: </b>vide<ion-icon class="colorstar0" name="star"></ion-icon>
-                                        </ion-label>
-                                        <ion-label *ngIf="item.vote == 1"><b>Status: </b>moyen<ion-icon class="colorstar1" name="star"></ion-icon>
-                                        </ion-label>
-                                        <ion-label *ngIf="item.vote == 2"><b>Status: </b>plein<ion-icon class="colorstar2" name="star"></ion-icon>
-                                        </ion-label>
-                                        <ion-label *ngIf="item.vote == 3"><b>Status: </b>fermé<ion-icon class="colorstar3" name="star"></ion-icon>
-                                        </ion-label>
-                                        <ion-label *ngIf="item.vote == 4"><b>Status: </b>non évalué<ion-icon  name="star"></ion-icon>
-                                        </ion-label>
-                                    
+<ion-content padding>
 
 
-                                    </div>
+  <ion-card *ngFor="let item of favoris">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <img *ngIf="item.categorie=='Café' || item.categorie=='Coffee Shop'"
+              src="../../../assets/icon/coffee_shop.jpg" style="height: 60px;width: 60px;" />
+            <img *ngIf="item.categorie!='Café' && item.categorie!='Coffee Shop'"
+              src="../../../assets/icon/locationYellow.png" style="height: 60px;width: 60px;" />
 
-                      
-                                </ion-col>
-                                <ion-col size="5">
-                                <ion-button [href]="'https://www.google.com/maps/place/'+item.nomEmplacement+'/@'+item.latitude+','+item.longitude+',12z?hl=fr-FR'"> <ion-icon  name="pin" style="height: 20px;width: 20px;"></ion-icon></ion-button>
+          </ion-col>
+          <ion-col size="8">
+            <ion-card-subtitle>{{item.categorie}} </ion-card-subtitle>
+            <ion-card-title>{{item.nomEmplacement}}</ion-card-title>
+            <ion-card-subtitle detail [routerLink]="['/', item.id,'details']">voir plus</ion-card-subtitle>
+          </ion-col>
 
-                              </ion-col>
-                              </ion-row>
-                            </ion-grid>
-                       
-                          </ion-card-content>
-                        </ion-card>
-              
-  
+        </ion-row>
+
+
+
+      </ion-grid>
+
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <div>
+              <ion-label *ngIf="item.vote == 0"><b>Status: </b>vide<ion-icon class="colorstar0" name="star"></ion-icon>
+              </ion-label>
+              <ion-label *ngIf="item.vote == 1"><b>Status: </b>moyen<ion-icon class="colorstar1" name="star"></ion-icon>
+              </ion-label>
+              <ion-label *ngIf="item.vote == 2"><b>Status: </b>plein<ion-icon class="colorstar2" name="star"></ion-icon>
+              </ion-label>
+              <ion-label *ngIf="item.vote == 3"><b>Status: </b>fermé<ion-icon class="colorstar3" name="star"></ion-icon>
+              </ion-label>
+              <ion-label *ngIf="item.vote == 4"><b>Status: </b>non évalué<ion-icon name="star"></ion-icon>
+              </ion-label>
+
+
+
+            </div>
+
+
+          </ion-col>
+          <ion-col size="5">
+            <ion-button
+              [href]="'https://www.google.com/maps/place/'+item.nomEmplacement+'/@'+item.latitude+','+item.longitude+',12z?hl=fr-FR'">
+              <ion-icon name="pin" style="height: 20px;width: 20px;"></ion-icon>
+            </ion-button>
+            <div class="center">
+
+              <ion-button color="danger" class="bs" (click)="defavoriser(item.id)">Annuler favoris</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-ajouteremplacement',
@@ -11,7 +12,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 })
 export class AjouteremplacementPage implements OnInit {
 
-  constructor(private http: HttpClient,private geolocation: Geolocation) { this.location(); }
+  constructor(private http: HttpClient,private geolocation: Geolocation,public alertController: AlertController) { this.location(); }
 
   ngOnInit() {
   }
@@ -28,6 +29,16 @@ export class AjouteremplacementPage implements OnInit {
 
   formulaire = { nomEmplacement: "", categorie: "" , latitude: "",longitude: "" };
   data: Observable<any>;
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      
+      message: 'Emplacement envoyé',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
   suggerer() {
     let postData = {
       "nomEmplacement": this.formulaire.nomEmplacement,
@@ -37,8 +48,10 @@ export class AjouteremplacementPage implements OnInit {
     }
     return this.http.post(environment.url + '/emplacements/add', postData, { withCredentials: true }).subscribe(data => {
       console.log('suggest');
+      this.presentAlert();
     }, error => {
       console.log(error);
     });
+   
   }
 }

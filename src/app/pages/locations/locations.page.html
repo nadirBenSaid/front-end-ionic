@@ -1,7 +1,12 @@
 <ion-header>
   <ion-toolbar color='dark'>
     <ion-menu-button color="light"></ion-menu-button>
-          <ion-title>Liste Emplacements</ion-title>
+          <ion-title>
+            Liste Emplacements
+            <ion-buttons style="float: right;" detail [routerLink]="['/', 'ajouteremplacement']" >
+              <ion-icon name="add"></ion-icon>
+            </ion-buttons>
+          </ion-title>
           
   </ion-toolbar>
 </ion-header>
@@ -12,9 +17,9 @@
        
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
       
-  <ion-card *ngFor="let item of (result.emplacements)" detail [routerLink]="['/', item.id,'details']"> 
+  <ion-card *ngFor="let item of (result.emplacements)" > 
 
-    <ion-card-header>
+    <ion-card-header detail [routerLink]="['/menu/', item.id,'details']">
             <ion-grid>
                 <ion-row>
 
@@ -49,6 +54,10 @@
                 </div>
 
           </ion-col>
+          <ion-col size="3">
+              <ion-button [href]="'https://www.google.com/maps/place/'+item.nomEmplacement+'/@'+item.latitude+','+item.longitude+',12z?hl=fr-FR'"> <ion-icon  name="pin" style="height: 20px;width: 20px;"></ion-icon></ion-button>
+  
+            </ion-col>
           
         </ion-row>
       </ion-grid>
