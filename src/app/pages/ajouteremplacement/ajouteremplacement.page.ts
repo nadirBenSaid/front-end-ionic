@@ -26,14 +26,14 @@ export class AjouteremplacementPage implements OnInit {
     });
   }
 
-  formulaire = { nomEmplacement: "", categorie: "" };
+  formulaire = { nomEmplacement: "", categorie: "" , latitude: "",longitude: "" };
   data: Observable<any>;
   suggerer() {
     let postData = {
       "nomEmplacement": this.formulaire.nomEmplacement,
       "categorie": this.formulaire.categorie,
-      "latitude": this.lat,
-      "longitude": this.lon
+      "latitude": this.formulaire.latitude,
+      "longitude": this.formulaire.longitude
     }
     return this.http.post(environment.url + '/emplacements/add', postData, { withCredentials: true }).subscribe(data => {
       console.log('suggest');
