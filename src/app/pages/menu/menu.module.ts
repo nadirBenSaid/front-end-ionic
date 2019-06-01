@@ -59,6 +59,11 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
+        path: 'settings', 
+        loadChildren: '../settings/menu.module#MenuPageModule',
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'licence', 
         loadChildren: '../licence/licence.module#LicencePageModule',
         canActivate: [AuthGuard]

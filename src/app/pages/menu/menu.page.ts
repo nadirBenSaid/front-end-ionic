@@ -11,45 +11,42 @@ export class MenuPage implements OnInit {
  
   pages = [
     {
-      title: 'Mon profil',
-      url: '/menu/profile',
-      icon: 'home'
-    },
-    {
-      title: 'Search',
+      title: 'Accueil',
       url: '/menu/search',
       icon: 'home'
     },
     {
+      title: 'Mon profil',
+      url: '/menu/profile',
+      icon: 'person'
+    },
+   
+    {
       title: 'Categories',
       url: '/menu/categories',
-      icon: 'logo-ionic'
+      icon: 'list-box'
     },
     {
       title: 'Mes favoris',
       url: '/menu/favoris',
-      icon: 'logo-ionic'
+      icon: 'star'
     },
     {
       title: 'emplacements',
       url: '/menu/locations',
-      icon: 'logo-ionic'
+      icon: 'pin'
     },
     {
       title: 'Reclamer',
       url: '/menu/reclamer',
-      icon: 'logo-ionic'
+      icon: 'alert'
     },
     {
-      title: 'Licence',
-      url: '/menu/licence',
-      icon: 'logo-ionic'
+      title: 'Parametres',
+      url: '/menu/settings',
+      icon: 'settings'
     },
-    {
-      title: 'A propos',
-      url: '/menu/propos',
-      icon: 'logo-ionic'
-    }
+   
   ];
  
   constructor(private router: Router, public storage: Storage) { }
