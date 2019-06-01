@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Emplacements</ion-title>
     <ion-buttons slot="start">
-<ion-back-button defaultHref="menu/categories" color="dark"></ion-back-button>
+      <ion-back-button defaultHref="menu/categories" color="dark"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -10,16 +10,21 @@
 <ion-content>
 
   <ion-list>
-    <ion-item *ngFor="let item of (result.emplacements)" class="bigItem"> 
+    <ion-item *ngFor="let item of (result.emplacements)" class="bigItem">
       <ion-item button [routerLink]="['/menu/', item.id,'details' ]" style="width: 100%">
 
         <ion-label text-wrap>
           <h1>{{ item.nomEmplacement }}</h1>
-          <ion-label *ngIf="item.vote == 0"><b>Status: </b>vide</ion-label>
-          <ion-label *ngIf="item.vote == 1"><b>Status: </b>moyen</ion-label>
-          <ion-label *ngIf="item.vote == 2"><b>Status: </b>plein</ion-label>
-          <ion-label *ngIf="item.vote == 3"><b>Status: </b>fermé</ion-label>
-          <ion-label *ngIf="item.vote == 4"><b>Status: </b>non évalué</ion-label>
+          <ion-label *ngIf="item.vote == 0"><b>Status: </b>vide<ion-icon class="colorstar0" name="star"></ion-icon>
+          </ion-label>
+          <ion-label *ngIf="item.vote == 1"><b>Status: </b>moyen<ion-icon class="colorstar1" name="star"></ion-icon>
+          </ion-label>
+          <ion-label *ngIf="item.vote == 2"><b>Status: </b>plein<ion-icon class="colorstar2" name="star"></ion-icon>
+          </ion-label>
+          <ion-label *ngIf="item.vote == 3"><b>Status: </b>fermé<ion-icon class="colorstar3" name="star"></ion-icon>
+          </ion-label>
+          <ion-label *ngIf="item.vote == 4"><b>Status: </b>non évalué<ion-icon name="star"></ion-icon>
+          </ion-label>
         </ion-label>
       </ion-item>
 
@@ -34,7 +39,7 @@
 
   </ion-list>
 
-  
+
 
 
 </ion-content>

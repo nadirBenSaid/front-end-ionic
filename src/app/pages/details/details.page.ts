@@ -8,6 +8,7 @@ import  {DetailsService} from './../../services/details.service';
 import { SearchService, SearchType } from './../../services/search.service';
 
 
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
@@ -51,7 +52,6 @@ export class DetailsPage implements OnInit {
 
 
   constructor(private searchService: SearchService, private alertCtrl: AlertController,public http: HttpClient,public route: ActivatedRoute,private detailsService : DetailsService) {   
-    
 
     var n = this.weekday[this.d.getDay()];
     this.loadData(n);
@@ -123,6 +123,15 @@ export class DetailsPage implements OnInit {
       (<HTMLInputElement>document.getElementById("99" + id)).setAttribute("for", "danger");
     }
   }
+   async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Message',
+      message: 'Vote ajouté avec success.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 
   async onGoto(){
    
@@ -170,6 +179,7 @@ export class DetailsPage implements OnInit {
             this.detailsService.voter(data,this.id);
             var n = this.weekday[this.d.getDay()];
             this.loadData(n);
+            this.presentAlert();
             }
         }
       ]

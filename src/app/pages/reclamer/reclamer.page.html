@@ -1,23 +1,32 @@
 <ion-header>
-    <ion-toolbar>
-   
-    </ion-toolbar>
-  </ion-header>
-
-
-      <img alt="logo" id="header_logo" height="100" float-right src="assets/icon/image1.png"> 
- 
+  <ion-toolbar color='dark'>
+    <ion-menu-button color="light"></ion-menu-button>
+          <ion-title>Réclamations</ion-title>
+          
+  </ion-toolbar>
+</ion-header>
+<div>
+<img alt="logo" id="header_logo" class='image' float-right src="assets/icon/image1.png"> 
+</div>
 
 <ion-content>
 <form #form="ngForm" (ngSubmit)="reclamer(form)">
+ 
   <ion-item>
   <ion-label  class="my-label" color="primary" size position="floating">Titre de la réclamation</ion-label>
   <ion-input   placeholder="Saisissez le titre de votre réclamation" name="titre" type="text" [(ngModel)]="formulaire.titre"></ion-input>
 </ion-item>
-  <ion-item>
+<ion-item>
   <ion-label class="my-label" color="primary" size position="floating">Réclamation</ion-label>
   <ion-textarea rows="4"  placeholder="Saisissez votre réclamation" name="message" type="text" [(ngModel)]="formulaire.message"></ion-textarea>
 </ion-item>
-  <ion-button class="bouton" color="primary" position="center" type="submit" expand="block" (click)="reclamer()">Réclamer</ion-button>
+
+<div class="center" >
+  <ion-row >
+      <ion-col class="signup-col">
+  <ion-button  color="dark" position="center" type="submit" expand="block" (click)="reclamer()"> Réclamer </ion-button>
+</ion-col>
+</ion-row>
+</div>
 </form>
 </ion-content>

@@ -46,11 +46,11 @@ export class ProfilePage implements OnInit {
 
     this.http.post(url, postData, {withCredentials: true} )
       .subscribe(data => {
-        this.result.message="Data updated successfully...";
+        this.result.message="Modification avec succès...";
         this.storage.clear();
         this.result2=data;
         this.storage.set('result', JSON.stringify(this.result2.user));
-        this.router.navigateByUrl('/search');
+        this.router.navigateByUrl('/menu/search');
        }, error => {
         console.log(error);
       });

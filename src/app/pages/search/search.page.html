@@ -1,18 +1,18 @@
 <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Search</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">Search</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 
 <ion-content>
-    <!-- <ion-button id="9{{idd}}" class="danger" (click)="addRemovefav(idd)">
+  <!-- <ion-button id="9{{idd}}" class="danger" (click)="addRemovefav(idd)">
         <label id="99{{idd}}" for="danger">Favoris</label>
       </ion-button> <br> -->
-      <!-- <ion-button id="9{{idd}}" class="primary" (click)="addRemovefav(idd)">
+  <!-- <ion-button id="9{{idd}}" class="primary" (click)="addRemovefav(idd)">
         <label id="99{{idd}}" for="primary">Favoris</label>
       </ion-button> <br> -->
   <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="getdata($event)"></ion-searchbar><br>
@@ -33,11 +33,16 @@
         <ion-label text-wrap>
           <h1><b>Nom: </b>{{ item.nomEmplacement }}</h1>
           <b>Catégorie: </b>{{ item.categorie }}
-          <ion-label *ngIf="item.vote == 0"><b>Status: </b>vide</ion-label>
-          <ion-label *ngIf="item.vote == 1"><b>Status: </b>moyen</ion-label>
-          <ion-label *ngIf="item.vote == 2"><b>Status: </b>plein</ion-label>
-          <ion-label *ngIf="item.vote == 3"><b>Status: </b>fermé</ion-label>
-          <ion-label *ngIf="item.vote == 4"><b>Status: </b>non évalué</ion-label>
+          <ion-label *ngIf="item.vote == 0"><b>Status: </b>vide<ion-icon class="colorstar0" name="star"></ion-icon>
+          </ion-label>
+          <ion-label *ngIf="item.vote == 1"><b>Status: </b>moyen<ion-icon class="colorstar1" name="star"></ion-icon>
+          </ion-label>
+          <ion-label *ngIf="item.vote == 2"><b>Status: </b>plein<ion-icon class="colorstar2" name="star"></ion-icon>
+          </ion-label>
+          <ion-label *ngIf="item.vote == 3"><b>Status: </b>fermé<ion-icon class="colorstar3" name="star"></ion-icon>
+          </ion-label>
+          <ion-label *ngIf="item.vote == 4"><b>Status: </b>non évalué<ion-icon name="star"></ion-icon>
+          </ion-label>
         </ion-label>
       </ion-item>
 

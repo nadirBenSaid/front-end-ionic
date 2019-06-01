@@ -1,14 +1,13 @@
 <ion-header>
-  <ion-toolbar>
-     
-          <ion-title>Home</ion-title>
+  <ion-toolbar color='dark'>
+    <ion-menu-button color="light"></ion-menu-button>
+          <ion-title>Liste Emplacements</ion-title>
+          
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-   <ion-icon name="search" class="larger"  detail [routerLink]="['/', 'search']" >
-
-   </ion-icon>
+   
           
        
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
