@@ -27,9 +27,8 @@ reclamer(form){
   
 var titre = this.formulaire.titre;
 var message = this.formulaire.message;
-
-
 this.reclamerService.reclamer(titre,message);
+this.router.navigateByUrl('/menu/reclamer');
 
 }
 }

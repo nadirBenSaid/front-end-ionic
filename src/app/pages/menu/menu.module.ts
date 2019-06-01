@@ -77,16 +77,6 @@ const routes: Routes = [
         path: 'propos', 
         loadChildren: '../propos/propos.module#ProposPageModule',
         canActivate: [AuthGuard]
-      },
-      {
-      path: ':id/details', 
-      loadChildren: './pages/details/details.module#DetailsPageModule' , 
-      canActivate: [AuthGuard]
-      },
-      {
-        path: 'lieux-par-categorie/:id', 
-        loadChildren: './pages/lieux-par-categorie/lieux-par-categorie.module#LieuxParCategoriePageModule' , 
-        canActivate: [AuthGuard]
       }
     ]
   }

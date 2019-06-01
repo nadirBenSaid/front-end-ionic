@@ -16,8 +16,8 @@ const routes: Routes = [
   // { path: 'reclamer', loadChildren: './pages/reclamer/reclamer.module#ReclamerPageModule' },
     // { path: 'favoris', loadChildren: './pages/favoris/favoris.module#FavorisPageModule', canActivate: [AuthGuard] },
     { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [GuestGuard]},
-    { path: ':id/details', loadChildren: './pages/details/details.module#DetailsPageModule' , canActivate: [AuthGuard]},
- { path: 'lieux-par-categorie/:id', loadChildren: './pages/lieux-par-categorie/lieux-par-categorie.module#LieuxParCategoriePageModule' , canActivate: [AuthGuard]},
+    // { path: ':id/details', loadChildren: './pages/details/details.module#DetailsPageModule' , canActivate: [AuthGuard]},
+//  { path: 'lieux-par-categorie/:id', loadChildren: './pages/lieux-par-categorie/lieux-par-categorie.module#LieuxParCategoriePageModule' , canActivate: [AuthGuard]},
   // { path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesPageModule', canActivate: [AuthGuard] },
   // { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule', canActivate: [AuthGuard] },
   // { path: 'locations', loadChildren: './pages/locations/locations.module#LocationsPageModule' , canActivate: [AuthGuard] },
@@ -25,16 +25,10 @@ const routes: Routes = [
   { path: 'account', loadChildren: './pages/account/account.module#AccountPageModule' },
   { path: 'delete-account', loadChildren: './pages/delete-account/delete-account.module#DeleteAccountPageModule' },
   // { path: 'propos', loadChildren: './pages/propos/propos.module#ProposPageModule' },
-  { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' }
+  { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },
+  { path: 'ajouteremplacement', loadChildren: './pages/ajouteremplacement/ajouteremplacement.module#AjouteremplacementPageModule' }
 
 ];
- 
-
-
-=======
-  { path: 'propos', loadChildren: './pages/propos/propos.module#ProposPageModule' },
-  { path: 'ajouteremplacement', loadChildren: './pages/ajouteremplacement/ajouteremplacement.module#AjouteremplacementPageModule' }
->>>>>>> ac2f95ee745ab49c7b8092c6c62bd2f6d27f4143
 
 @NgModule({
   imports: [

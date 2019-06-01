@@ -7,11 +7,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { ReclamerPage } from './reclamer.page';
 
-import { ReclamerService } from 'src/app/services/reclamer.service';
-import{HttpClientModule} from '@angular/common/http';
-import {IonicStorageModule} from '@ionic/Storage';
-import{HttpModule} from '@angular/http';
-
 const routes: Routes = [
   {
     path: '',
@@ -23,15 +18,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule,
     ReactiveFormsModule,
     IonicModule, 
-    IonicStorageModule.forRoot(),
     RouterModule.forChild(routes)
-  ],
-   providers: [
-    ReclamerService
-
   ],
   declarations: [ReclamerPage]
 })

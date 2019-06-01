@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Emplacements</ion-title>
+    <ion-buttons slot="start">
+<ion-back-button defaultHref="menu/categories" color="dark"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -8,7 +11,7 @@
 
   <ion-list>
     <ion-item *ngFor="let item of (result.emplacements)" class="bigItem"> 
-      <ion-item button [routerLink]="['/', item.id,'details' ]" style="width: 100%">
+      <ion-item button [routerLink]="['/menu/', item.id,'details' ]" style="width: 100%">
 
         <ion-label text-wrap>
           <h1>{{ item.nomEmplacement }}</h1>
