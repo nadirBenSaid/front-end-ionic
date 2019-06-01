@@ -1,54 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterEvent } from '@angular/router';
-
+import { Router } from "@angular/router";
+import { Storage } from '@ionic/storage';
+ 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
-  pages=[
+ 
+  pages = [
     {
-      icon:'home',
-      title:'Accueil',
-      url:'/menu/home'
+      title: 'Mon profil',
+      url: '/menu/profile',
+      icon: 'home'
     },
     {
-      icon:'person',
-      title:'Mon profil',
-      url:'/menu/profil'
+      title: 'Search',
+      url: '/menu/search',
+      icon: 'home'
     },
     {
-      icon:'star',
-      title:'Mes favoris',
-      url:'/menu/favoris'
+      title: 'Categories',
+      url: '/menu/categories',
+      icon: 'logo-ionic'
     },
     {
-      icon:'list-box',
-      title:'Categories',
-      url:'/menu/categories'
+      title: 'Mes favoris',
+      url: '/menu/favoris',
+      icon: 'logo-ionic'
     },
     {
-      icon:'settings',
-      title:'Paramètres',
-      url:'/menu/settings'
+      title: 'emplacements',
+      url: '/menu/locations',
+      icon: 'logo-ionic'
     },
     {
-      icon:'alert',
-      title:'Réclamation',
-      url:'/menu/reclamer'
+      title: 'Reclamer',
+      url: '/menu/reclamer',
+      icon: 'logo-ionic'
+    },
+    {
+      title: 'Licence',
+      url: '/menu/licence',
+      icon: 'logo-ionic'
+    },
+    {
+      title: 'A propos',
+      url: '/menu/propos',
+      icon: 'logo-ionic'
     }
-
   ];
-
-  selectedPath='';
-  constructor(private router:Router) {
-    this.router.events.subscribe((event:RouterEvent)=>{
-         this.selectedPath=event.url;
-    });
-   }
-
+ 
+  constructor(private router: Router, public storage: Storage) { }
+ 
   ngOnInit() {
   }
 
+  logout() {
+    this.storage.clear();
+    this.router.navigateByUrl('/home');
+  }
+ 
 }
