@@ -12,13 +12,17 @@ import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
 })
 
 export class LocationsService {
-  latALon;
+  
   constructor(private http: HttpClient,
     private androidPermissions: AndroidPermissions,
     private geolocation: Geolocation,
-    private locationAccuracy: LocationAccuracy) { }
+    private locationAccuracy: LocationAccuracy) 
+    { 
+      this.checkGPSPermission();
+    }
+    latALonLoc: string = "0";
 
-  //Check if application having GPS access permission  
+    //Check if application having GPS access permission  
   checkGPSPermission() {
     this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
       result => {
@@ -63,21 +67,24 @@ export class LocationsService {
     );
   }
 
-  location() {
-    this.geolocation.getCurrentPosition().then((resp) => {
-      //resp.coords.latitude
-      //resp.coords.longitude
-      this.latALon = resp.coords.latitude.toFixed(4) + "," + resp.coords.longitude.toFixed(4);
 
-    }).catch((error) => {
-      console.log('error getting location', error);
-    });
-  }
+    location() {
+      this.geolocation.getCurrentPosition().then((resp) => {
+        //resp.coords.latitude
+        //resp.coords.longitude
+        console.log("lat"+resp.coords.latitude.toFixed(4));
+        this.latALonLoc = resp.coords.latitude.toFixed(4) + "," + resp.coords.longitude.toFixed(4);
+        console.log(this.latALonLoc);
+        return resp.coords.latitude.toFixed(4) + "," + resp.coords.longitude.toFixed(4);
+      }).catch((error) => {
+        console.log('error getting location', error);
+      });
+    }
 
 
    getUserData()
    {
-    return this.http.get(environment.url+'/emplacements/near/35.5711,-5.3724', { withCredentials: true });  
+      return this.http.get(environment.url+'/emplacements/near/'+this.latALonLoc, { withCredentials: true });  
 }
 
 }

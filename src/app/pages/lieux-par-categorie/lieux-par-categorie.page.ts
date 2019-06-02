@@ -80,6 +80,10 @@ result: any = [];
       },
       (error) => {
         console.log(error);
+        setTimeout(() => {
+          this.getData();
+          console.log("again");
+         }, 1000);
       });
   }
 

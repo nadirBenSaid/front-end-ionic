@@ -28,13 +28,13 @@ getData() {
       (data)=>{
         console.log(data);
         this.result=data;
-       
-    
-
-
       },
       (error) => {
         console.log(error);
+        setTimeout(() => {
+          this.getData();
+          console.log("again");
+         }, 1000);
       });
   }
  
@@ -57,12 +57,7 @@ getData() {
   
 
   constructor(private locationsService: LocationsService,router: Router, public http: HttpClient) {
-    this
-    
-
-this.getData();
-
-
+      this.getData();
   }
 
 

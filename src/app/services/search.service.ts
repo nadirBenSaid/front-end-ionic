@@ -33,7 +33,7 @@ export class SearchService {
     private locationAccuracy: LocationAccuracy
     ) {
     
-    this.location();
+      this.checkGPSPermission();
   }
 
 
@@ -87,7 +87,7 @@ export class SearchService {
       //resp.coords.latitude
       //resp.coords.longitude
       this.latALon = resp.coords.latitude.toFixed(4) + "," + resp.coords.longitude.toFixed(4);
-
+      return resp.coords.latitude.toFixed(4) + "," + resp.coords.longitude.toFixed(4);
     }).catch((error) => {
       console.log('error getting location', error);
     });

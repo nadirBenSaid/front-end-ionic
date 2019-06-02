@@ -48,7 +48,7 @@
         <div class="center" >
       <ion-row >
           <ion-col class="signup-col">
-            <ion-button color ="dark" class="submit-btn" full ><a href="/menu/search">Annuler</a></ion-button>
+            <ion-button [routerLink]="['//menu/search']" color ="dark" class="submit-btn" full >Annuler</ion-button>
             <ion-button color ="dark" class="submit-btn" full type="submit" >Enregistrer</ion-button><br>
             {{result.message}}
           </ion-col>

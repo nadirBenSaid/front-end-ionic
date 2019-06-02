@@ -22,7 +22,7 @@ latALon:string="";
     private geolocation: Geolocation,
     private locationAccuracy: LocationAccuracy
     ) {
-    this.location();
+      this.checkGPSPermission();
    }
 
   //Check if application having GPS access permission  
@@ -82,7 +82,7 @@ latALon:string="";
   }
    getEmplacement(idCat:string)
   {
-    return this.http.get(environment.url+'/emplacements/categorie/'+idCat+'/100000/35.5612,-5.3652', { withCredentials: true });  
+    return this.http.get(environment.url+'/emplacements/categorie/'+idCat+'/100000/'+this.latALon, { withCredentials: true });  
   }
 
 
