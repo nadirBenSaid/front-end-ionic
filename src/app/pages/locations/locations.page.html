@@ -1,12 +1,28 @@
 <ion-header>
+   
   <ion-toolbar color='dark'>
-    <ion-menu-button color="light"></ion-menu-button>
-          <ion-title>
-            Liste Emplacements
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+            <ion-menu-button color="light"></ion-menu-button>
+
+        </ion-col>
+        <ion-col>
+            <ion-title>
+                Les Emplacements
+                
+              </ion-title>
+
+        </ion-col>
+        <ion-col>
             <ion-buttons style="float: right;" detail [routerLink]="['/', 'ajouteremplacement']" >
               <ion-icon name="add"></ion-icon>
             </ion-buttons>
-          </ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+   
+          
           
   </ion-toolbar>
 </ion-header>

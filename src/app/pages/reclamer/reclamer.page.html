@@ -1,7 +1,18 @@
 <ion-header>
   <ion-toolbar color='dark'>
-    <ion-menu-button color="light"></ion-menu-button>
-          <ion-title>Réclamations</ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+            <ion-menu-button color="light"></ion-menu-button>
+
+        </ion-col>
+        <ion-col size="7">
+            <ion-title>Réclamations</ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+          
           
   </ion-toolbar>
 </ion-header>
@@ -18,7 +29,7 @@
 </ion-item>
 <ion-item>
   <ion-label class="my-label" color="primary" size position="floating">Réclamation</ion-label>
-  <ion-textarea rows="4"  placeholder="Saisissez votre réclamation" name="message" type="text" [(ngModel)]="formulaire.message"></ion-textarea>
+  <ion-textarea rows="2"  placeholder="Saisissez votre réclamation" name="message" type="text" [(ngModel)]="formulaire.message"></ion-textarea>
 </ion-item>
 
 <div class="center" >
